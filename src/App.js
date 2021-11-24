@@ -18,7 +18,7 @@ constructor(){
   render() {
     const todos = this.state.todos.map((todo, i)=>{
       return(
-        <Form>
+        
         <div className="col md-4">
           
           <div className="card mt-4" >        
@@ -47,7 +47,8 @@ constructor(){
         
       </nav>  
        <div className="row mt-4">{todos}</div>
-        <img src={logo} className="App-logo" alt="logo" />   
+        <img src={logo} className="App-logo" alt="logo" />
+        {/* <Form/>  ESTO NO ESTARIA ANDANDO */}
     </div>
   );
 }
