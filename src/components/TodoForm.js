@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 class Form extends Component{
     constructor(){
         super();
@@ -9,6 +10,7 @@ class Form extends Component{
           priority:''
         };
         this.handleInput = this.handleInput.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
       }   
       
       handleInput(e){
@@ -17,11 +19,16 @@ class Form extends Component{
             [name]: value
         })
       }
-      
+      handleSubmit(e){
+        e.preventDefault();
+        this.props.onAddTodo(this.state);
+        console.log('sending the data...');
+      }
+
       render() {
             return (
                 <div className="card">
-                    <form className="card-body" onSubmit={this.handle.Submit}>
+                    <form className="card-body" onSubmit={this.handleSubmit}>
                         <div className="form-group">
                         <input onChange={this.handleInput} type="text" name="title" className="form-control" placeholder="Title"/>
                         </div>
@@ -43,7 +50,7 @@ class Form extends Component{
                        </select>
                     </div>
                     <div className="form-group">
-                        <input type="submit" name="submit" placeholder="Enviar" value="submit"/> 
+                        <input className="btn btn-primary" type="submit" name="submit" placeholder="Enviar" value="submit"/> 
                     </div>
                     
                     </form>

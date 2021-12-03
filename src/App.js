@@ -2,9 +2,11 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Form from './components/TodoForm'
 
 import { todos } from './todos.json';
+
+import Form from './components/TodoForm'
+
 console.log(todos);
 
 class App extends Component{
@@ -14,12 +16,28 @@ constructor(){
   this.state = {
     todos
   }
+  this.handleAddTodo = this.handleAddTodo.bind(this);
 }
+  handleRemove(indice){
+      if(window.confirm("Seguro quieres eliminar esta tarea?")){ //Para solicitar confirmacion antes de eliminar, preferente antes que un 'alert' - Se le agrega el window para declarar a React que viene del navegador
+        this.setState({
+          todos: this.state.todos.filter((e , i) =>{             //En vez de recorrer todos los elementos, los filtra si cumplen una condicion
+            return i !== indice;                                 //En este caso si no coincide con el indice que le damos, lo agrega, en el caso que sea igual, lo filtra, no lo agrega al todos
+          })
+        })    
+      }
+  }
+
+  handleAddTodo(todo){
+    this.setState({
+      todos: [...this.state.todos, todo]
+    })
+  }
+
   render() {
     const todos = this.state.todos.map((todo, i)=>{
-      return(
-        
-        <div className="col md-4">
+      return(       
+        <div className="col md-4" key={i}>
           
           <div className="card mt-4" >        
           <div className="card-header"> <h3> {todo.title} </h3> 
@@ -32,7 +50,9 @@ constructor(){
           <div className="card-body"> <p> {todo.description}</p> 
                                       <p><mark> {todo.responsible} </mark></p>
           </div>
-          
+          <div className="card-footer">
+              <button className="btn btn-danger" onClick= {this.handleRemove.bind(this, i)} > Delete</button>
+          </div>
         </div>
         </div>
       )
@@ -48,8 +68,15 @@ constructor(){
       </nav>  
        <div className="row mt-4">{todos}</div>
         <img src={logo} className="App-logo" alt="logo" />
-        {/* <Form/>  ESTO NO ESTARIA ANDANDO */}
+        <Form onAddTodo={this.handleAddTodo}/>  
+    
+    {/* <div className="col-md-8">
+      <div className="row">
+        { todos }
+      </div>
+    </div> */}
     </div>
+    
   );
 }
 }
