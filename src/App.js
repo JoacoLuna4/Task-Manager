@@ -1,13 +1,17 @@
+// import React, {Component, useEffect} from 'react';
 import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 
-import { todos } from './todos.json';
+import { todos } from './todos.json'; 
 
 import Form from './components/TodoForm'
 
 console.log(todos);
+let todosJSON = JSON.stringify(todos)
+localStorage.setItem("data", todosJSON)
+
 
 class App extends Component{
   
@@ -18,6 +22,10 @@ constructor(){
   }
   this.handleAddTodo = this.handleAddTodo.bind(this);
 }
+// useEffect(() => {
+
+// }, []);
+
   handleRemove(indice){
       if(window.confirm("Seguro quieres eliminar esta tarea?")){ //Para solicitar confirmacion antes de eliminar, preferente antes que un 'alert' - Se le agrega el window para declarar a React que viene del navegador
         this.setState({
@@ -82,8 +90,9 @@ constructor(){
         </div>
       </div>
     </div>
-    
   );
 }
 }
 export default App;
+
+console.log(todos);
