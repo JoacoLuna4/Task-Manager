@@ -10,9 +10,14 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+    height: 3em;
   }
 }
-
+.title{
+  font-family: sans-serif; 
+  color: #fff;
+  margin-top: 10px;
+}
 .App-header {
   background-color: #282c34;
 
