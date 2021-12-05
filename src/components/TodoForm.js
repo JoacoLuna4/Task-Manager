@@ -36,17 +36,18 @@ class Form extends Component{
                         <input onChange={this.handleInput} type="text" name="responsible" className="form-control" placeholder="Responsible"/>
                     </div>
                     <div className="form-group">
-                        <input onChange={this.handleInput} 
-                        type="text" 
+                        
+                        <textarea onChange={this.handleInput} 
                         name="description" 
                         className="form-control" 
-                        placeholder="Description"/>
+                        placeholder="Description"> </textarea>
+                    
                     </div>
                     <div className="form-group">
                         <select onChange={this.handleInput} name="priority" className="form-control">
-                        <option> low </option>
-                        <option> medium </option>
-                        <option> high </option>
+                        <option> Low </option>
+                        <option> Medium </option>
+                        <option> High </option>
                        </select>
                     </div>
                     <div className="form-group">

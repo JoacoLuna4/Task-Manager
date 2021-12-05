@@ -4,12 +4,8 @@ import logo from "./logo.svg";
 import "./App.css";
 
 // import { todos } from './todos.json';
-
 import Form from "./components/TodoForm";
 
-// console.log(todos);
-// let todosJSON = JSON.stringify(todos);
-// localStorage.setItem("data", todosJSON);
 
 class App extends Component {
   constructor() {
@@ -30,15 +26,10 @@ class App extends Component {
     }
   }
 
-  // useEffect(() => {
-
-  // }, []);
-
   handleRemove(indice) {
     let newArray = this.state.todos;
     newArray.splice(indice, 1);
-    if (window.confirm("Seguro quieres eliminar esta tarea?")) {
-      //Para solicitar confirmacion antes de eliminar, preferente antes que un 'alert' - Se le agrega el window para declarar a React que viene del navegador
+    if (window.confirm("Seguro querés eliminar esta tarea?")) {      //Para solicitar confirmacion antes de eliminar, preferente antes que un 'alert' - Se le agrega el window para declarar a React que viene del navegador
       this.setState({
         todos: newArray,
       });
