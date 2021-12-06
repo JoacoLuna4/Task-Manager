@@ -37,10 +37,11 @@ class Form extends Component{
                     </div>
                     <div className="form-group">
                         
-                        <textarea onChange={this.handleInput} 
+                        <textarea 
+                        onChange={this.handleInput} 
+                        placeholder="Description..."
                         name="description" 
-                        className="form-control" 
-                        placeholder="Description"> </textarea>
+                        className="form-control"> </textarea>
                     
                     </div>
                     <div className="form-group">
